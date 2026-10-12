@@ -1,1 +1,350 @@
-# Event-Flow
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>EventFlow - Event Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+     <header>
+        <nav class="navbar">
+            <a href="#dashboard" class="logo">EventFlow</a>
+            <div class="nav-links">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#events">Events</a>
+                <a href="#participants">Participants</a>
+                <a href="#attendance">Attendance</a>
+                <a href="#tickets">Tickets</a>
+                <a href="#reports">Reports</a>
+            </div>
+            <a href="#setting" class="setting-link">Setting</a>
+        </nav>
+     </header>
+     <!-- main -->
+      <main>
+        <!-- dashboard -->
+         <section id="dashboard">
+            <div class="section-header"> <h1> Event Management Dashboard</h1>
+                <p>Manage your events, Participants, Tickets, Attendance and Reports</p>
+            </div>
+            <div class="dashboard-stat">
+                <div class="stat-card">
+                    <h3>Total Event</h3>
+                    <p id="total-event">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Events</h3>
+                    <p id="activ-events">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Participants</h3>
+                    <p id="total-participants">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Available Tickets</h3>
+                    <p id="available-tickets">0</p>
+                </div>
+
+            </div>
+            <div id="dashboard-content">
+                <!-- additional information by js -->
+            </div>
+    
+         </section>
+         <!-- Events -->
+         <section id="events">
+            <div class="section-header">
+                <h2>Events</h2>
+                <p>Creat, manage, and track your events.</p>
+            </div>
+            <!-- event search & Filter -->
+             <div class="event-tools">
+                <input type="search"  id="event-search" placeholder="search events..." >
+            <select id="event-filter">
+                <option value="all">All Events</option>
+                <option value="active">Active</option>
+                <option value="upcoming">Upcoming</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+            <button type="button" id="add-event-button">Add Event</button>
+            </div>
+
+            <!-- event form -->
+
+            <div id="event-form-container">
+                <form id="event-form">
+                    <div>
+                        <label for="event-name">Event Name</label>
+                        <input type="text" id="event-name" name="event-name" placeholder="Enter event name" required>
+                    </div>
+                    <div>
+                        <label for="event-date">Date</label>
+                        <input type="date" id="event-date" name="event-date" required>
+                    
+                    </div>
+                    <div>
+                        <label for="event-time">Time</label>
+                        <input type="time" name="event-time" id="event-time" required>
+                    </div>
+                    <div>
+                        <label for="event-location">Location</label>
+                        <input type="text" id="event-location" name="event-location" required>
+                    </div>
+                    <div>
+                        <label for="event-capacity">Capacity</label>
+                        <input type="number" id="event-capacity" name="event-capacity" min="1" placeholder="event-capacityp" required>
+
+                    </div>
+                    <div>
+                        <label for="event-price">Ticket Price</label>
+                        <input type="number" id="event-price" name="event-price" min="0" placeholder="Enter Ticket price">
+                    </div>
+                    <div>
+                        <label for="event-type">Event Type</label>
+                        <select id="event-type" name="event-type">
+                            <option value="conference">Conference</option>
+                            <option value="workshop">Workshop</option>
+                            <option value="seminar">Seminar</option>
+                            <option value="concert">Concert</option>
+                            <option value="other">other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="event-description">Description</label>
+                        <textarea id="event-description" name="event-description" rows="5" placeholder="Describe the event..."></textarea>
+                    </div>
+                    <div>
+                        <label for="event-image">Event Image</label>
+                        <input type="file" id="event-image" name="event-image" accept="image/*">
+                    </div>
+                    <div>
+                        <button type="submit">Save Event</button>
+                        <button type="reset" id="cancel-event-button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            <!-- event list -->
+
+            <div id="event-list">
+                <!-- event card by js -->
+            </div>
+
+         </section>
+         <!-- participants -->
+          <section id="participants">
+            <div class="section-header">
+                <h2>Participants</h2>
+                <p>Manage event participants and registrations</p>
+            </div>
+            <div class="participants-tools">
+                <input type="search" id="participant-search" placeholder="Search participants">
+                <select id="participant-filter">
+                    <option value="all">All participants</option>
+                    <option value="registered">Registered</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <button type="button" id="add-participant-button">Add participant</button>
+            </div>
+            <!-- participant form -->
+             <div id="participant-form-container">
+                <form id="participant-form">
+                    <div>
+                        <label for="participant-name">Full Name</label>
+                        <input type="text" id="participant-name" name="participant-name" placeholder="Enter full name" required>
+                    </div>
+                    <div>
+                        <label for="participant-email">Email</label>
+                        <input type="email" id="participant-email" name="participant-email" placeholder="Enter email" required>
+                    </div>
+                    <div>
+                        <label for="participant-phone">Phone</label>
+                        <input type="tel" id="participant-phone" name="participant-phone" placeholder="Enter phone number">
+                    </div>
+                    <div>
+                        <label for="participant-event">Event</label>
+                        <select name="participant-event" id="participant-event">
+                            <option value="">Select an event</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="participant-status">Registration status</label>
+                        <select name="participant-status" id="participant-status">
+                            <option value="registered">Registered</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <button type="submit">Save Participant</button>
+
+                </form>
+             </div>
+             <!-- participant list -->
+              <div id="participant-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Event</th>
+                            <th>status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="participant-table-body">
+                        <!-- will add by js -->
+                    </tbody>
+                </table>
+              </div>
+          </section>
+          <!-- attendance -->
+           <section id="attendance">
+            <div class="section-header">
+                <h2>Attendance</h2>
+                <p>Track participant attendance and check-in time</p>
+            </div>
+            <div class="attendance-tools">
+                <select id="attendance-event">
+                    <option value="">Select an event</option>
+                </select>
+                <input type="date" id="attendance-date">
+            </div>
+            <div id="attendance-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Participant</th>
+                            <th>Event</th>
+                            <th>Status</th>
+                            <th>check-in Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance-table-body">
+                        <!-- attendance date will add by js -->
+                    </tbody>
+                </table>
+            </div>
+           </section>
+           <!-- Tickets -->
+            <section id="ticket">
+                <div class="section-header">
+                    <h2>Tickets</h2>
+                    <p>Manage ticket type, price, and availability.</p>
+                </div>
+                <div class="ticket-tools">
+                    <select id="ticket-event">
+                        <option value="">Select an event</option>
+
+                    </select>
+                    <button type="button" id="add-ticket-button">Add Ticket Type</button>
+                </div>
+                <!-- ticket form -->
+                 <div id="ticket-form">
+                    <div>
+                        <label for="ticket-name">Ticket Name</label>
+                        <input type="text" id="ticket-name" name="ticket-name"
+                        placeholder="Example: VIP" required>
+                    </div>
+                    <div>
+                        <label for="ticket-price">Price</label>
+                        <input type="number" id="ticket-price" name="ticket-price" min="0" placeholder="Enter Price" required>
+                    </div>
+                    <div>
+                        <label for="ticket-capacity">Capacity</label>
+                        <input type="number" id="ticket-capacity" name="ticket-capacity" min="1" placeholder="Enter Capacity" required>
+                    </div>
+                    <div>
+                        <label for="ticket-description">Description</label>
+                        <textarea name="ticket-description" id="ticket-description" rows="4" placeholder="Describe this ticket type..."></textarea>
+                    </div>
+                    <button type="submit">Save Ticket</button>
+                </form>
+                 </div>
+                 <!-- ticket list -->
+
+                 <div id="ticket-list">
+                    <!-- ticket card add by js -->
+                 </div>
+            </section>
+
+            <!--======= reports -=======-->
+
+            <section id="reports">
+                <div class="section-header">
+                    <h2>Reports</h2>
+                    <p>View event statistics and management reports.</p>
+                </div>
+                <div class="report-card">
+                    <h3>Total Events</h3>
+                    <p id="report-total-events">0</p>
+                </div>
+                <div class="report-card">
+                    <h3>Total Participants</h3>
+                    <p id="report-total-participants">0</p>
+                </div>
+                <div class="report-card">
+                    <h3>Attendance Rate</h3>
+                    <p id="report-attendance-rate">0</p>
+                </div>
+                <div class="report-card">
+                    <h3>Total Revenue</h3>
+                    <p id="report-total-revenue">0</p>
+                </div>
+            </div>
+            <div id="report-content">
+                <!-- detailed report will be add by js -->
+            </div>
+            </section>
+
+            <!-- ====Settings==== -->
+
+            <section id="settings">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                    <p>Customize your EventFlow System.</p>
+                </div>
+                <form id="settings-form">
+                    <div>
+                        <label for="admin-name">Administrator Name</label>
+                        <input type="text" id="admin-name" name="admin-name" placeholder="Enter Administrator name">
+                    </div>
+                    <div>
+                        <label for="theme">Theme</label>
+                        <select name="theme" id="theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="currency">Currency</label>
+                        <select name="currency" id="currency">
+                            <option value="usd">USD</option>
+                            <option value="eur">EUR</option>
+                            <option value="afn">AFN</option>
+                        </select>
+                    </div>
+                    <button type="submit">Save Setting</button>
+                </form>
+                <div id="settings-content">
+                    <!-- add by js -->
+                </div>
+            </section>
+             
+      </main>
+      <!-- footer -->
+
+      <footer>
+        <p>@ 2026 EventFlow.All right reserved.</p>
+        <p>contact
+            <a href="mailto:aziziforoozan42@gmail.com">aziziforoozan42@gmail.com</a>
+        </p>
+      </footer>
+      <!-- javascript -->
+       <script src="script.js"></script>
+</body>
+</html>
