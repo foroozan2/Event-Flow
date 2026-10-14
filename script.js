@@ -2528,3 +2528,22 @@ loadSettings();
 renderEvents();
 
 updateAll();
+
+function loadSettings() {
+    const savedSettings = JSON.parse(
+        localStorage.getItem("eventflow-settings")
+    );
+    settings = {
+        adminName:"",
+        theme: "light",
+        currency: "usd",
+        ...savedSettings
+    };
+    document.getElementById("admin-name").value =
+    settings.adminName;
+    document.getElementById("theme").value =
+    settings.theme;
+    document.getElementById("currency").value =
+    settings.currency;
+    applyTheme(settings.theme);
+}
