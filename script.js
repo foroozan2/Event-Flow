@@ -167,9 +167,6 @@ const settingsContent =
    2. APPLICATION DATA
    ========================================================= */
 
-// Load saved data from localStorage.
-// If there is no saved data, use an empty array.
-
 let events =
     JSON.parse(localStorage.getItem("eventflow-events")) || [];
 
@@ -194,9 +191,6 @@ let settings =
    3. EDITING STATE
    ========================================================= */
 
-// These variables tell the application
-// whether we are creating or editing something.
-
 let editingEventId = null;
 let editingParticipantId = null;
 let editingTicketId = null;
@@ -209,9 +203,6 @@ let editingTicketId = null;
 
 /*
    Generate a unique ID.
-
-   Date.now() returns the current time in milliseconds.
-   It gives us a simple unique number for our data.
 */
 
 function generateId() {
@@ -254,11 +245,6 @@ function saveData() {
 
 /*
    Format a date.
-
-   Example:
-   2026-10-01
-   becomes:
-   October 1, 2026
 */
 
 function formatDate(date) {
@@ -602,12 +588,6 @@ eventForm.addEventListener(
             return;
         }
 
-
-        /*
-           If we are editing an existing event,
-           find that event and update it.
-        */
-
         if (editingEventId !== null) {
 
             const eventToEdit =
@@ -672,10 +652,6 @@ eventForm.addEventListener(
 
         /*
            Read the selected image.
-
-           FileReader converts the image
-           into a Data URL so it can be stored
-           in localStorage.
         */
 
         if (eventImage.files.length > 0) {
@@ -871,10 +847,6 @@ function cancelEvent(id) {
    6. PARTICIPANT FUNCTIONS
    ========================================================= */
 
-
-/*
-   Update event options inside participant form.
-*/
 
 function updateParticipantEventOptions() {
 
@@ -1126,9 +1098,6 @@ participantForm.addEventListener(
 
         /*
            Check event capacity.
-
-           We only perform this check
-           when creating a new participant.
         */
 
         if (
@@ -2073,10 +2042,6 @@ function updateDashboard() {
    ========================================================= */
 
 
-/*
-   Calculate and display reports.
-*/
-
 function updateReports() {
 
     const totalParticipants =
@@ -2462,11 +2427,6 @@ ticketEvent.addEventListener(
    13. UPDATE EVERYTHING
    ========================================================= */
 
-
-/*
-   This function refreshes all important
-   parts of the application.
-*/
 
 function updateAll() {
 
